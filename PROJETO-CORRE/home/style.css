@@ -42,31 +42,38 @@ nav a{
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background: radial-gradient(circle at top, orangered, black 70%);
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("img/original-CCF335B1-E82E-4837-AF4A-BE0B364AEF1E.jpeg");
+    background-size:cover;
+    background-position: center; 
 }
 
 .cabecalho h1{
     margin-bottom: 10px;
+    padding-top: 50px;
 }
 
 .cabecalho h3{
     margin-bottom: 20px;
 }
 
-button{
+
+
+.btn.head{
+    font-size: 1.2rem;
+    margin-top: 10px;
     background-color: orangered;
     color: white;
     padding: 10px 30px;
     border-radius: 200px;
     font-weight: bold;
     border: none;
-
 }
-
-.head{
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
+    .btn.head:hover{
+        transition: 0.3s;
+        transform: scale(1.02);
+    }
 
 .img.mov{
     padding: 50px 20px;
@@ -98,12 +105,9 @@ header{
 
 h1{
     color: orangered;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
     font-size: 3.5rem;
-    padding-top: 50px;
+    
 }
 h2{
     color: orangered;
@@ -111,7 +115,7 @@ h2{
     font-size: 3rem;
 }
 h3{
-    color: rgb(97, 97, 97);
+    color: rgb(175, 175, 175);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -132,5 +136,68 @@ h3{
         transition: 0.3s;
         box-shadow: 0 10px 20px orangered;
     }
+
+.beneficio{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("img/original-516488FE-72BC-4D7C-B436-AEB2652E8142.jpeg");
+    background-size:auto;
+    background-position: center;
+}
+
+.beneficio h1{
+    margin-top: 100px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 10%;
+}
+
+.card{
+    background-color: rgb(0, 0, 25);
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    transition: 0.3s;
+    text-align: center;
+}
+    .card:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px orangered;
+    }
+.card h3{
+    color: orangered;
+    font-size: 1.5rem;
+}
+.card p{
+    padding: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    color:whitesmoke ;
+}
+.card span{
+    color: azure;
+    text-align: center;
+}
+.card a{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: orangered;
+    text-decoration: none;
+    cursor: hand;
+}
+  
+.key{
+    color: orangered;
+}
 
 
