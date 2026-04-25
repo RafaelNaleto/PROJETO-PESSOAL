@@ -22,7 +22,6 @@ nav{
     height: 80px;
 }
 
-
 nav a{
     font-size: 1.2rem;
     padding-left: 30px;
@@ -35,6 +34,17 @@ nav a{
     background-color: rgb(245, 65, 0);
     }
 
+.btnLog{
+    display: flex;
+    justify-content: flex-end;
+}
+nav button .btnLog{
+    width: 120px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+}
 .cabecalho{
     display: flex;
     flex-direction: column;
@@ -44,7 +54,7 @@ nav a{
     text-align: center;
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("img/original-CCF335B1-E82E-4837-AF4A-BE0B364AEF1E.jpeg");
+        url("img/IMG-INICIO.jpeg");
     background-size:cover;
     background-position: center; 
 }
@@ -91,10 +101,7 @@ nav a{
         box-shadow:0 10px 20px orangered;
     }
 
-header{
-    margin-top: 80px;
 
-}
 
 .movimento{
     display: flex;
@@ -115,10 +122,8 @@ h2{
     font-size: 3rem;
 }
 h3{
-    color: rgb(175, 175, 175);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    color: rgb(128, 128, 128);
+
     padding-top: 10px;
 }
     
@@ -145,7 +150,7 @@ h3{
     align-items: center;
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("img/original-516488FE-72BC-4D7C-B436-AEB2652E8142.jpeg");
+        url("img/IMG-BENEFICIO.jpeg");
     background-size:auto;
     background-position: center;
 }
@@ -168,6 +173,7 @@ h3{
     width: 300px;
     transition: 0.3s;
     text-align: center;
+    border: 1px solid orangered;
 }
     .card:hover{
         transform: translateY(-5px);
@@ -199,5 +205,149 @@ h3{
 .key{
     color: orangered;
 }
+.aplicativo{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+.aplicativo h1{
+    margin:50px 30px;
+    justify-content: flex-start;
+}
+.appText{
 
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    padding: 100px 60px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-radius: 20px;
+}
+.appText p{
+    margin-top: 10px;
+}
+.cardApp{
+    margin: 20px;
+    border-radius: 25px;
+    border: 2px solid gray;
+    padding: 30px;
+}
+    .cardApp:hover{
+        transform: translateX(-5px);
+        transition: 0.2s;
+    }
+
+.appContent img{
+    max-width: 80px;
+    height: auto;
+}
+
+.appContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.appContent a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: transparent;
+    transition: 0.2s;
+}
+
+.appContent img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;      
+    border-radius: 50%;
+}
+
+.appBox{
+    display: flex;
+    border: 2px solid gray;
+    border-radius: 20px;
+}
+
+/*LOGIN*/
+
+.auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: 
+        linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0,0.6)),
+        url("img/IMG-.jpg");
+
+    background-size: cover;
+    background-position: 60%;
+}
+
+.box{
+    border: 3px solid orangered;
+    padding: 50px 80px;
+    line-height: 2;
+    border-radius: 12px;
+    background-color: white;
+    color: orangered;
+    box-shadow: 0 2px 10px orangered;
+}
+
+.auth h1{
+    color: orangered;
+    text-align: center;
+}
+
+.auth input{
+    width: 300px;
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid orangered;
+}
+    .auth input:active{
+        transform: scale(1.01);
+        transition: 0.2s;
+    }
+    .auth input:focus{
+        background-color: rgba(255, 68, 0, 0.315);
+    }
+
+.auth p{
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-style: bold;
+}
+
+.auth button{
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+
+}
+    .auth button:hover{
+        background-color: rgb(214, 57, 0);
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
+    .auth button:active{
+        transform: scale(0.98);
+        transition: 0.1s;
+    }
+.tes{
+    display: flex;
+    justify-content: center;
+}
+
+.btnEntrar{
+    display: flex;
+    justify-content: flex-end;
+}
 
