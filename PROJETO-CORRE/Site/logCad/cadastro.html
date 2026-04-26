@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORRE | Cadastro</title>
+
+    <link rel="icon" href="../img/IMG-NS.jpeg">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <body>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#beneficio">Benefícios</a>
+        <a href="#aplicativo">Aplicativos</a>
+
+        <div class="btnLog">
+            <button>Entrar</button>
+        </div>
+    </nav>
+
+    <section class="auth">
+        <div class="box"> 
+            <h1>Cadastro</h1>
+
+            <p>Código de Ativação:</p>
+            <input type="text" id="ipt_cdg_ativacao" placeholder=" Código de Ativação ">
+<br>
+            <p>Nome Completo:</p>
+            <input type="text" id="ipt_nome" placeholder=" Informe seu nome...">
+<br>
+            <p>E-mail:</p>
+            <input type="email" id="ipt_email" placeholder=" usuario@email.com">
+<br>
+            <p>Senha:</p>
+            <input type="password" id="ipt_senha" placeholder=" ********* ">
+<br>
+            <p>Confirmar Senha:</p>
+            <input type="password" id="ipt_confirmar_senha" placeholder=" ********* ">
+<br><br>
+            <div class="tes">
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+            
+        </div>
+    </section>
+</body>
+
+<script>
+
+function cadastrar() {
+
+    var codigoVar = ipt_cdg_ativacao.value;
+    var nomeVar = ipt_nome.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var confirmacaoSenhaVar = ipt_confirmar_senha.value;
+
+    if (
+        codigoVar == "" ||
+        nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+    ) {
+
+        alert("Preencha todos os campos!");
+        return false;
+
+    } else {
+        setInterval(sumirMensagem, 5000);
+    }
+
+    if (senhaVar != confirmacaoSenhaVar) {
+        alert("As senhas não coincidem!");
+        return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            codigoServer: codigoVar,
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert("Cadastro realizado com sucesso! Redirecionando para login...");
+
+            setTimeout(() => {
+                window.location = "login.html";
+            }, 2000);
+
+        } else {
+
+            throw "Houve um erro ao tentar realizar o cadastro!";
+
+        }
+
+    }).catch(function (erro) {
+
+        console.log(`#ERRO: ${erro}`);
+        alert("Erro ao cadastrar.");
+
+    });
+
+    return false;
+}
+
+function sumirMensagem() {
+
+}
+
+</script>
+
+</html>

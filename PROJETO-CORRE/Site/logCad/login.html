@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COREE | Login</title>
+
+    <link rel="icon" href="../img/IMG-NS.jpeg">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#beneficio">Benefícios</a>
+        <a href="#aplicativo">Aplicativos</a>
+
+        <div class="btnLog">
+            <button>Entrar</button>
+        </div>
+    </nav>
+
+    <section class="auth">
+        <div class="box"> 
+            <h1>Login</h1>
+
+            <p>E-mail:</p>
+            <input type="email" id="ipt_email" placeholder="  Digite o E-mail...">
+<br>
+            <p>Senha:</p>
+            <input type="password" id="ipt_senha" placeholder="  Informe a senha...">
+            <br><br>
+            
+            <div class="tes">
+                <button onclick="entrar()">Entrar</button>
+            </div>
+            
+        </div>
+    </section>
+</body>
+
+<script>
+function entrar() {
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+
+    if (emailVar == "" || senhaVar == "") {
+        alert("Preencha todos os campos!");
+        return false;
+    }
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                window.location = "./dashboard/dashboard.html";
+            });
+
+        } else {
+            alert("E-mail ou senha inválidos!");
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+        alert("Erro ao conectar com o servidor.");
+    });
+
+    return false;
+}
+</script>
+</html>

@@ -272,7 +272,7 @@ h3{
     border-radius: 20px;
 }
 
-/*LOGIN*/
+/*LOGIN/CADASTRO*/
 
 .auth{
     display: flex;
@@ -285,6 +285,7 @@ h3{
 
     background-size: cover;
     background-position: 60%;
+    margin-top: 80px;
 }
 
 .box{
