@@ -11,19 +11,13 @@
 <body>
     <body>
         <nav>
-            <a href="#inicio">Início</a>
-            <a href="#beneficio">Benefícios</a>
-            <a href="#aplicativo">Aplicativos</a>
-
+            <a href="../home/index.html">Início</a>
         </nav>
 
     <section class="auth">
         <div class="box"> 
             <h1>Cadastro</h1>
 
-            <p>Código de Ativação:</p>
-            <input type="text" id="ipt_cdg_ativacao" placeholder=" Código de Ativação ">
-<br>
             <p>Nome Completo:</p>
             <input type="text" id="ipt_nome" placeholder=" Informe seu nome...">
 <br>
@@ -48,14 +42,12 @@
 
 function cadastrar() {
 
-    var codigoVar = ipt_cdg_ativacao.value;
     var nomeVar = ipt_nome.value;
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_confirmar_senha.value;
 
     if (
-        codigoVar == "" ||
         nomeVar == "" ||
         emailVar == "" ||
         senhaVar == "" ||
@@ -81,7 +73,6 @@ function cadastrar() {
         },
 
         body: JSON.stringify({
-            codigoServer: codigoVar,
             nomeServer: nomeVar,
             emailServer: emailVar,
             senhaServer: senhaVar
