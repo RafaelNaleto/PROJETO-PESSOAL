@@ -1,4 +1,4 @@
-// var ambiente_processo = 'producao';
+//var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
@@ -24,7 +24,7 @@ var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../Site")));
 
 app.use(cors());
 
