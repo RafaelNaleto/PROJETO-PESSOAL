@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <body>
         <nav>
             <a href="../home/index.html">Início</a>
         </nav>
@@ -66,7 +65,7 @@ function cadastrar() {
         return false;
     }
 
-    fetch("/usuarios/cadastrar", {
+    fetch("http://localhost:3333/usuarios/cadastrar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

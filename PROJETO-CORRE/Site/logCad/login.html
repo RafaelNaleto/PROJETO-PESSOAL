@@ -45,7 +45,7 @@ function entrar() {
         return false;
     }
 
-    fetch("/usuarios/autenticar", {
+    fetch("http://localhost:3333/usuarios/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -62,7 +62,7 @@ function entrar() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                window.location = "./dashboard/dashboard.html";
+                window.location.href = "../dashboard/dashboard.html";
             });
 
         } else {
