@@ -214,77 +214,85 @@ h3{
     color: orangered;
 }
 .aplicativo{
-    display: flex;
+
     height: 100vh;
-    align-items: center;
 }
 .aplicativo h1{
     margin:50px 30px;
     justify-content: flex-start;
-}
-.appText{
 
+}
+
+.appPergunta{
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 400px;
-    padding: 100px 60px;
+    justify-content: space-between;
     font-size: 1.1rem;
     line-height: 1.6;
     border-radius: 20px;
+    height: auto;
+
 }
-.appText p{
+.appPergunta p{
     margin-top: 10px;
 }
-.cardApp{
+.boxPergunta{
     margin: 20px;
     border-radius: 25px;
     border: 2px solid gray;
     padding: 30px;
 }
-    .cardApp:hover{
-        transform: translateX(-5px);
+    .boxPergunta:hover{
+        transform: translateX(-2px);
         transition: 0.2s;
     }
 
-.appContent img{
-    max-width: 80px;
-    height: auto;
-}
 
-.appContent{
+
+.appUsados{
+    justify-content: space-between;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 20px;
-
+    height: fit-content;
+    margin: 30px;
 }
-.appContent a {
+
+.appUsados img{
+    max-width: 80px;
+    height: auto;
+    padding: 30px;
+}
+
+.appUsados a {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     background-color: transparent;
     transition: 0.2s;
-}
 
-.appContent img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;      
-    border-radius: 50%;
 }
 
 .appBox{
     display: flex;
-    border: 2px solid gray;
+    border: 2px solid orangered;
     border-radius: 20px;
+    align-items: center;
+    width: 50%;
+    min-height: 200px;
+    padding: 20px;
 }
+    .appBox:hover{
+        transform: translateY(-2px);
+    }
 .card,
 .container,
 .btn.head,
-.cardApp,
+.boxPergunta,
 .auth button,
-.img.mov img{
+.img.mov img,
+.appBox{
     transition: 0.3s;
 }
 
