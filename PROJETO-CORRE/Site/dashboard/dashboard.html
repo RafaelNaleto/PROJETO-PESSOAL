@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,78 @@
 
     <link rel="icon" href="../img/IMG-NS.jpeg">
     <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <h1>Dashboard</h1>
-    <p>Próximo passo...</p>
+
+<body class="bodyDash">
+    <nav>
+        <a href="../home/index.html">Início</a>
+    </nav>
+
+    <h1>Performance</h1>
+    <div class="areaDashboard">
+        <div class="dashboard">
+            <canvas id="grafico"></canvas>
+        </div>
+
+        <div class="metas">
+            <h2>Metas</h2>
+
+            <div class="cardMeta">
+                <h3>5 KM</h3>
+                <!-- Alterar dependendo do formulário de performance -->
+                <p>Correr 5km em até <b>25 min</b></p>
+            </div>
+
+            <div class="cardMeta">
+                <h3>Distância</h3>
+                <p>Aumentar para <b>10 km</b></p>
+            </div>
+
+            <div class="cardMeta">
+                <h3>Frequência</h3>
+                <p>Correr <b>4 vezes</b> por semana</p>
+            </div>
+
+            <div class="cardMeta">
+                <h3>Ritmo</h3>
+                <p>Manter pace abaixo de <b>5:30/km</b></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const ctx = document.getElementById('grafico');
+
+        const meuGrafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+                datasets: [{
+                    label: 'Distância (km)',
+                    data: [5, 10, 7, 4, 6, 21, 15],
+                    borderColor: 'orangered',
+                    backgroundColor: 'rgba(214, 57, 0, 0.4)',
+                    borderWidth: 3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+
+        });
+    </script>
+
+
+
 </body>
+
 </html>

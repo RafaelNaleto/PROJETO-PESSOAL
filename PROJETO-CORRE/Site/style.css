@@ -384,6 +384,80 @@ h3{
     justify-content: flex-end;
 }
 
+/*DASHBOARD*/
+
+.bodyDash{
+    background-color: black;
+}
+
+.bodyDash h1{
+    padding: 25px;
+}
+.areaDashboard{
+    display: flex;
+    align-items: flex-start;
+    width: 95%;
+    height: 100%;
+    padding: 25px;
+    gap: 40px;
+    border: 2px solid red;
+}
+
+.dashboard{
+    width: 80%;
+    height: 80%;
+    background-color: rgb(9, 9, 9);
+    padding: 30px;
+
+}
+
+.metas {
+    width: 50%;
+    min-height: 450px;
+    border: 2px solid orangered;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+.metas h2 {
+    color: orangered;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cardMeta {
+    background-color: rgb(15, 15, 15);
+    border: 1px solid orangered;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+    transition: 0.3s;
+}
+
+.cardMeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 18px orangered;
+}
+
+.cardMeta h3 {
+    color: orangered;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.cardMeta p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.cardMeta b {
+    color: orangered;
+}
+
+
+
 /*RESPONSIVIDADE*/
 @media (max-width: 768px){
     .movimento,
@@ -413,4 +487,14 @@ h3{
         font-size: 2rem;
         text-align: center;
     }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
 }
