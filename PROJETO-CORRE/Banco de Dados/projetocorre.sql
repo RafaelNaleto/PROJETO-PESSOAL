@@ -13,7 +13,6 @@ create table questionario(
     freqSemanal int not null,
     tempExpMeses int not null,
     maxDistancia decimal (4,2),
-    objetivo varchar(60),
     fkUsuario int unique,
     constraint cFrequencia 
 		check(freqSemanal >= 1 and freqSemanal <= 7),

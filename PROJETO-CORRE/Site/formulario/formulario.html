@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="paginaQuiz" onload="onloadEsconder()">
+
+    <header>
+        <div class="logo">
+            <a href="../home/index.html">
+                <img src="../img/LOGO-CORRE-BRNC.png" alt="Logo Corre">
+            </a>
+        </div>
+
+        <nav>
+            <a href="../home/index.html">Início</a>
+        </nav>
+    </header>
+
+    <div id="pontuacaoEJogo" class="containerQuiz">
+
+        <div class="areaBotaoInicio">
+            <button id="btnIniciarQuiz" onclick="iniciarQuiz()">
+                ANALISAR PERFORMANCE
+            </button>
+        </div>
+
+        <div id="pontuacao" class="painelPontuacao">
+            <div id="pontuacaoFinalJogo" class="resultadoPontuacao">
+
+                <span id="pontuacaoFinal">
+                    Pontuação Final:
+                    <span id="spanPontuacaoFinal">***</span>
+                </span>
+
+                <span id="msgFinal">***</span>
+
+            </div>
+        </div>
+
+        <div id="jogo" class="cardQuiz">
+
+            <div id="infoQuestao" class="infoQuestao">
+                <span>
+                    Questão atual:
+                    <span id="spanNumeroDaQuestaoAtual"></span>
+                    de
+                    <span id="qtdQuestoes"></span>
+                    questões.
+                </span>
+            </div>
+
+            <div id="perguntaDaQuestaoAtual" class="perguntaQuiz">
+                <span id="spanQuestaoExibida" class="textoPergunta"></span>
+            </div>
+
+            <div id="infoAlternativas" class="textoAlternativas">
+                <span>
+                    <em>Escolha uma opção dentre as abaixo:</em>
+                </span>
+            </div>
+
+            <div id="opcoes" class="listaAlternativas">
+
+                <span class="alternativa">
+                    <input type="radio" id="primeiraOpcao" name="option"
+                        class="radioAlternativa"
+                        value="alternativaA"
+                        onclick="responder()" />
+
+                    <label for="primeiraOpcao"
+                        class="labelAlternativa"
+                        id="labelOpcaoUm"></label>
+                </span>
+
+                <span class="alternativa">
+                    <input type="radio" id="segundaOpcao" name="option"
+                        class="radioAlternativa"
+                        value="alternativaB"
+                        onclick="responder()" />
+
+                    <label for="segundaOpcao"
+                        class="labelAlternativa"
+                        id="labelOpcaoDois"></label>
+                </span>
+
+                <span class="alternativa">
+                    <input type="radio" id="terceiraOpcao" name="option"
+                        class="radioAlternativa"
+                        value="alternativaC"
+                        onclick="responder()" />
+
+                    <label for="terceiraOpcao"
+                        class="labelAlternativa"
+                        id="labelOpcaoTres"></label>
+                </span>
+
+                <span class="alternativa">
+                    <input type="radio" id="quartaOpcao" name="option"
+                        class="radioAlternativa"
+                        value="alternativaD"
+                        onclick="responder()" />
+
+                    <label for="quartaOpcao"
+                        class="labelAlternativa"
+                        id="labelOpcaoQuatro"></label>
+                </span>
+
+            </div>
+
+            <div id="botoes" class="areaBotoesQuiz">
+
+                <button onclick="avancar()"
+                    id="btnProx"
+                    disabled>
+                    Avançar para próxima questão
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
