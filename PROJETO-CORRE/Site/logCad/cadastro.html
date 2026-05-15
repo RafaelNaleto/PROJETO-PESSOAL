@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../home/index.html"><img src="../img/LOGO-CORRE-BRNC.png" alt="Logo Corre"></a>
+            <i><a href="../home/index.html">CORRE</a></i>
         </div>
         <nav>
             <a href="../home/index.html">Início</a>
@@ -60,7 +60,7 @@ function cadastrar() {
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
     ) {
-
+      //cardErro.style.display = "block";
         alert("Preencha todos os campos!");
         return false;
 
@@ -72,8 +72,8 @@ function cadastrar() {
         alert("As senhas não coincidem!");
         return false;
     }
-
-    fetch("http://localhost:3333/usuarios/cadastrar", {
+    
+    fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -83,23 +83,35 @@ function cadastrar() {
             nomeServer: nomeVar,
             emailServer: emailVar,
             senhaServer: senhaVar
-        })
+        }),
 
     }).then(function (resposta) {
 
         console.log("resposta: ", resposta);
-
+        
         if (resposta.ok) {
+            //cardErro.style.display = "block";
 
             alert("Cadastro realizado com sucesso! Redirecionando para login...");
 
             setTimeout(() => {
                 window.location = "login.html";
             }, 2000);
+            limparFormulario();
 
         } else {
 
-            throw "Houve um erro ao tentar realizar o cadastro!";
+            resposta.text().then((texto) => {
+                console.log(texto);
+
+                if(
+                    texto.includes("Duplicate")
+                ){
+                    alert("Este email já está cadastrado")
+                }
+
+                
+            })
 
         }
 
