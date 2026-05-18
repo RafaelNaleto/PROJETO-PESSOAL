@@ -67,6 +67,7 @@ const listaDeQuestoes = [
 let numeroDaQuestaoAtual = 0
 let pontuacaoFinal = 0
 let quantidadeDeQuestoes = listaDeQuestoes.length
+let respostas = {}
 // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
 function onloadEsconder() {
@@ -173,20 +174,26 @@ function checarResposta() {
     options.forEach((option) => {
         if (option.checked) {
 
+            respostas[numeroDaQuestaoAtual] == option.value
+
             if(option.value == "alternativaA"){
                 pontuacaoFinal += questaoAtual.pontosA
+                salvarResposta()
             }
 
             else if(option.value == "alternativaB"){
                 pontuacaoFinal += questaoAtual.pontosB
+                salvarResposta()
             }
 
             else if(option.value == "alternativaC"){
                 pontuacaoFinal += questaoAtual.pontosC
+                salvarResposta()
             }
 
             else if(option.value == "alternativaD"){
                 pontuacaoFinal += questaoAtual.pontosD
+                salvarResposta()
             }
 
             numeroDaQuestaoAtual++ 
@@ -250,4 +257,10 @@ function finalizarJogo() {
     // btnConcluir.disabled = true
     btnTentarNovamente.disabled = false
 
+}
+
+function salvarResposta(){
+    var resposta = [
+        
+    ]
 }
