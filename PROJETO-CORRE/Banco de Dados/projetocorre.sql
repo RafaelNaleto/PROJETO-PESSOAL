@@ -10,9 +10,10 @@ create table usuario(
 
 create table questionario(
 	id int primary key auto_increment,
-    freqSemanal int not null,
     tempExpMeses int not null,
     maxDistancia decimal (4,2),
+    freqSemanal int not null,
+    objetivo varchar(60),
     fkUsuario int unique,
     constraint cFrequencia 
 		check(freqSemanal >= 1 and freqSemanal <= 7),

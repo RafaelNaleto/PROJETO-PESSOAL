@@ -260,7 +260,18 @@ function finalizarJogo() {
 }
 
 function salvarResposta(){
-    var resposta = [
-        
-    ]
+    var idUsuario = sessionStorage.ID_USUARIO
+
+        fetch("/fomulario/salvar"), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tempExpMesesServer: tempExpMeses,
+                maxDistanciaServer: maxDistancia,
+                freqSemanalServer: freqSemanal,
+                objetivoServer: objetivo
+            })
+        }
 }
