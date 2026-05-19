@@ -56,33 +56,7 @@
     </div>
 
 
-    <script>
-        const ctx = document.getElementById('grafico');
-
-        const meuGrafico = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
-                datasets: [{
-                    label: 'Distância (km)',
-                    data: [5, 10, 7, 4, 6, 21, 15],
-                    borderColor: 'orangered',
-                    backgroundColor: 'rgba(214, 57, 0, 0.4)',
-                    borderWidth: 3,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            },
-
-        });
-    </script>
+    <script src="dashboard.js"></script>
 
 
 

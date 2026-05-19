@@ -347,20 +347,72 @@ h3{
     transition: 0.3s;
 }
 
-footer{
-    background-color: black;
-    height: 50%;
-    width: 100%;
+.footer{
+    background-color: #0f0f0f;
     color: white;
+    padding-top: 50px;
+    margin-top: 80px;
+    border-top: 2px solid orangered;
 }
 
-footer hr{
-    color: white;
+.footerContainer{
+    width: 90%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-footer img{
-    width: 80px;
+.footerMarca{
+    width: 300px;
+}
+
+.footerMarca h2{
+    color: orangered;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.footerMarca p{
+    color: #cfcfcf;
+    line-height: 1.5;
+}
+
+.footerLinks,
+.footerContato,
+.footerSocial{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footerLinks h3,
+.footerContato h3,
+.footerSocial h3{
+    color: orangered;
+    margin-bottom: 10px;
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.footer a:hover{
+    color: orangered;
+    transform: translateX(3px);
+}
+
+.footerDireitos{
+    margin-top: 40px;
     padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #a5a5a5;
 }
 
 
@@ -526,54 +578,6 @@ footer img{
 
 /*AVALIAÇÂO*/
 
-.areaBotaoInicio{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.paginaQuiz{
-    background: 
-        linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0,0.6)),
-        url("img/IMG-.jpg");
-    margin: 0;
-    min-height: 100vh;
-}
-
-.containerQuiz{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    background-color: white;
-    width: 400px;
-    height: auto;
-    margin: 100px auto 0 auto;
-    border-radius: 12px;
-    box-shadow: 5px 5px 5px black;
-}
-
-.areaBotaoInicio button{
-    background-color: orangered;
-    padding: 12px;
-    border-radius: 22px;
-    border: none;
-    color: white;
-    font-weight: bold;
-    
-}
-    .areaBotaoInicio:hover{
-        transition: 0.3s;
-        transform: scale(1.02);
-    }
-
-.cardQuiz{
-    display: flex;
-    flex-direction: column;
-}
-
-
-
 
 h1 {
     font-family: 'Bebas Neue', sans-serif;
@@ -581,4 +585,160 @@ h1 {
 
 body {
     font-family: 'Montserrat', sans-serif;
+}
+
+.paginaQuiz{
+    margin: 0;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.78)),
+        url("img/IMG-.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.containerQuiz{
+    width: 520px;
+    min-height: 360px;
+    margin: 130px auto 60px auto;
+    padding: 35px;
+    background: rgba(15, 15, 15, 0.92);
+    border: 1px solid rgba(255, 69, 0, 0.4);
+    border-radius: 22px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areaBotaoInicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areaBotaoInicio button,
+#btnProx,
+#btnTentarNovamente{
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 13px 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.areaBotaoInicio button:hover,
+#btnProx:hover,
+#btnTentarNovamente:hover{
+    transform: scale(1.05);
+    background-color: rgb(255, 90, 30);
+}
+
+.areaBotaoInicio button:disabled,
+#btnProx:disabled,
+#btnTentarNovamente:disabled{
+    background-color: #555;
+    transform: none;
+}
+
+.cardQuiz{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.infoQuestao{
+    color: orangered;
+    font-weight: bold;
+    text-align: center;
+}
+
+.perguntaQuiz{
+    text-align: center;
+}
+
+.textoPergunta{
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.textoAlternativas{
+    text-align: center;
+    color: #cfcfcf;
+}
+
+.listaAlternativas{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.alternativa{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.radioAlternativa{
+    display: none;
+}
+
+.labelAlternativa{
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 14px;
+    background-color: #1f1f1f;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.labelAlternativa:hover{
+    border-color: orangered;
+
+    background-color: #292929;
+}
+
+.radioAlternativa:checked + .labelAlternativa{
+    background-color: orangered;
+    color: white;
+    border-color: orangered;
+    box-shadow: 0 0 18px rgba(255,69,0,0.45);
+}
+
+#botoes{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.painelPontuacao{
+    width: 100%;
+    text-align: center;
+}
+
+.resultadoPontuacao{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#pontuacaoFinal{
+    font-size: 22px;
+    font-weight: bold;
+    color: orangered;
+}
+
+#msgFinal{
+    font-size: 20px;
+    line-height: 1.5;
+    color: white;
 }

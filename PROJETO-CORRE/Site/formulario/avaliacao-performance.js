@@ -67,7 +67,16 @@ const listaDeQuestoes = [
 let numeroDaQuestaoAtual = 0
 let pontuacaoFinal = 0
 let quantidadeDeQuestoes = listaDeQuestoes.length
-let respostas = {}
+
+var tempExpMeses = ""
+var maxDistancia = ""
+var freqSemanal = ""
+var objetivo = ""
+var fkUsuario = ""
+
+let perfil = ""
+
+let respostas = []
 // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
 function onloadEsconder() {
@@ -149,7 +158,7 @@ function avancar() {
     desmarcarRadioButtons()
 
 
-    if (numeroDaQuestaoAtual <= quantidadeDeQuestoes - 1) {
+    if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
         setTimeout(() => {preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)}, 300)
     }
 
@@ -174,29 +183,101 @@ function checarResposta() {
     options.forEach((option) => {
         if (option.checked) {
 
-            respostas[numeroDaQuestaoAtual] == option.value
+            respostas[numeroDaQuestaoAtual] = option.value
 
-            if(option.value == "alternativaA"){
-                pontuacaoFinal += questaoAtual.pontosA
-                salvarResposta()
+            //questão 1 - tempo de experiencia
+            if (numeroDaQuestaoAtual == 0) {
+                if(option.value == "alternativaA"){
+                    tempExpMeses = 0
+                    pontuacaoFinal += questaoAtual.pontosA
+                }
+
+                else if(option.value == "alternativaB"){
+                    tempExpMeses = 6
+                    pontuacaoFinal += questaoAtual.pontosB
+                }
+
+                else if(option.value == "alternativaC"){
+                    tempExpMeses = 12
+                    pontuacaoFinal += questaoAtual.pontosC
+                }
+
+                else if(option.value == "alternativaD"){
+                    tempExpMeses = 24
+                    pontuacaoFinal += questaoAtual.pontosD
+                }
             }
 
-            else if(option.value == "alternativaB"){
-                pontuacaoFinal += questaoAtual.pontosB
-                salvarResposta()
+            //questão 2 - disância máxima
+            if (numeroDaQuestaoAtual == 1) {
+                if(option.value == "alternativaA"){
+                    maxDistancia = 3
+                    pontuacaoFinal += questaoAtual.pontosA
+                }
+
+                else if(option.value == "alternativaB"){
+                    maxDistancia = 5
+                    pontuacaoFinal += questaoAtual.pontosB
+                }
+
+                else if(option.value == "alternativaC"){
+                    maxDistancia = 10
+                    pontuacaoFinal += questaoAtual.pontosC
+                }
+
+                else if(option.value == "alternativaD"){
+                    maxDistancia = 21
+                    pontuacaoFinal += questaoAtual.pontosD
+                }
             }
 
-            else if(option.value == "alternativaC"){
-                pontuacaoFinal += questaoAtual.pontosC
-                salvarResposta()
+            //questão 3 - frequencia
+            if (numeroDaQuestaoAtual == 2) {
+                if(option.value == "alternativaA"){
+                    freqSemanal = 1
+                    pontuacaoFinal += questaoAtual.pontosA
+                }
+
+                else if(option.value == "alternativaB"){
+                    freqSemanal = 3
+                    pontuacaoFinal += questaoAtual.pontosB
+                }
+
+                else if(option.value == "alternativaC"){
+                    freqSemanal = 5
+                    pontuacaoFinal += questaoAtual.pontosC
+                }
+
+                else if(option.value == "alternativaD"){
+                    freqSemanal = 6
+                    pontuacaoFinal += questaoAtual.pontosD
+                }
             }
 
-            else if(option.value == "alternativaD"){
-                pontuacaoFinal += questaoAtual.pontosD
-                salvarResposta()
-            }
+            //questão 4 - objetivo
+            if (numeroDaQuestaoAtual == 3) {
+                if(option.value == "alternativaA"){
+                    objetivo = "Começar a correr"
+                    pontuacaoFinal += questaoAtual.pontosA
+                }
 
+                else if(option.value == "alternativaB"){
+                    objetivo = "Melhorar o meu condicionamento"
+                    pontuacaoFinal += questaoAtual.pontosB
+                }
+
+                else if(option.value == "alternativaC"){
+                    objetivo = "Melhorar o meu pace"
+                    pontuacaoFinal += questaoAtual.pontosC
+                }
+
+                else if(option.value == "alternativaD"){
+                    objetivo = "Competir"
+                    pontuacaoFinal += questaoAtual.pontosD
+                }
+            }
             numeroDaQuestaoAtual++ 
+
         }
 
     })
@@ -221,7 +302,7 @@ function finalizarJogo() {
     /*let textoParaMensagemFinal = null
     let classComCoresParaMensagemFinal = null
     */
-   let perfil = ""
+   
    let mensagem = ""
 
     if(pontuacaoFinal <= 6){
@@ -257,21 +338,33 @@ function finalizarJogo() {
     // btnConcluir.disabled = true
     btnTentarNovamente.disabled = false
 
+    salvarResposta()
+
 }
 
 function salvarResposta(){
     var idUsuario = sessionStorage.ID_USUARIO
 
-        fetch("/fomulario/salvar"), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                tempExpMesesServer: tempExpMeses,
-                maxDistanciaServer: maxDistancia,
-                freqSemanalServer: freqSemanal,
-                objetivoServer: objetivo
-            })
-        }
+    fetch("/formulario/salvarQuestionario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            tempExpMesesServer: tempExpMeses,
+            maxDistanciaServer: maxDistancia,
+            freqSemanalServer: freqSemanal,
+            objetivoServer: objetivo,
+            fkUsuarioServer: idUsuario,
+            perfilServer: perfil
+        })
+    })
+
+    /*
+    setTimeout(() => {
+        window.location = "../dashboard/dashboard.html";
+    }, 1000);
+    */
 }
+
+

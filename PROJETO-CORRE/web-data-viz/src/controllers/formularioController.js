@@ -2,47 +2,31 @@ var formularioModel = require("../models/formularioModel");
 
 function salvarQuestionario(req, res) {
 
-    const limite_linhas = 7;
+    var tempExpMeses = req.body.tempExpMesesServer;
+    var maxDistancia = req.body.maxDistanciaServer;
+    var freqSemanal = req.body.freqSemanalServer;
+    var objetivo = req.body.objetivoServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+    var perfil = req.body.perfilServer;
 
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
+    formularioModel.salvarQuestionario(
+        tempExpMeses,
+        maxDistancia,
+        freqSemanal,
+        objetivo,
+        fkUsuario,
+        perfil
+    )
+    .then(function(resultado){
+        res.status(200).json(resultado);
+    })
+    .catch(function(erro){
+        console.log("Erro ao salvar questionário!");
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-
-function buscarMedidasEmTempoReal(req, res) {
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
+    salvarQuestionario
 }

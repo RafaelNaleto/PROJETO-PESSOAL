@@ -72,6 +72,11 @@ function cadastrar() {
         alert("As senhas não coincidem!");
         return false;
     }
+
+    if (!emailVar.includes('@')) {
+        alert("O e-mail precisa de '@'.")
+        return false;
+    }
     
     fetch("/usuarios/cadastrar", {
         method: "POST",
