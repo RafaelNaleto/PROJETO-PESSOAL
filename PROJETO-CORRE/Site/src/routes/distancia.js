@@ -7,6 +7,8 @@ router.get("/buscarDistancia/:idUsuario",function(req, res) {
     distanciaController.buscarDistancia(req, res)
 });
 
-router.post("/cadastrarCorrida")
+router.post("/salvarMetricas", function(req, res) {
+    distanciaController.salvarMetricas(req, res)
+});
 
 module.exports = router;

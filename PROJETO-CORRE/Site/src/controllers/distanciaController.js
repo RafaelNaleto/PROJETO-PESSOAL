@@ -16,10 +16,32 @@ function buscarDistancia(req, res) {
     });
 }
 
-//function cadastrarCorrida(req, res){
-  //  var 
-//}
+function salvarMetricas(req, res) {
+
+    var distanciaKm = req.body.distanciaServer;
+    var tempoHoras = req.body.tempoHorasServer;
+    var tempoMin = req.body.tempoMinServer;
+    var tempoSeg = req.body.tempoSegServer;
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    distanciaModel.salvarMetricas(
+        distanciaKm,
+        tempoHoras,
+        tempoMin,
+        tempoSeg,
+        fkUsuario
+    )
+    .then(function(resultado){
+        res.status(200).json(resultado);
+    })
+    .catch(function(erro){
+        console.log("Erro ao salvar questionário!");
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
-    buscarDistancia
+    buscarDistancia,
+    salvarMetricas
 }

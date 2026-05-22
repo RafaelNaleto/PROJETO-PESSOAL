@@ -1,28 +1,29 @@
-const ctx = document.getElementById('grafico');
+// const ctx = document.getElementById('grafico');
 
-const meuGrafico = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
-        datasets: [{
-            label: 'Distância (km)',
-            data: [],
-            borderColor: 'orangered',
-            backgroundColor: 'rgba(214, 57, 0, 0.4)',
-            borderWidth: 3,
-            fill: true
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    },
+// const meuGrafico = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//         labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
+//         datasets: [{
+//             label: 'Distância (km)',
+//             data: [],
+//             borderColor: 'orangered',
+//             backgroundColor: 'rgba(214, 57, 0, 0.4)',
+//             borderWidth: 3,
+//             fill: true
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         }
+//     },
 
-});
+// }); 
+
 // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -34,9 +35,9 @@ const meuGrafico = new Chart(ctx, {
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico(idUsuario, perfil) {
+function obterDadosGrafico( ) {
 
-    alterarTitulo(idUsuario)
+    //alterarTitulo(idUsuario)
 
     perfilH2.innerHTML = `${perfil}`
 
@@ -44,7 +45,7 @@ function obterDadosGrafico(idUsuario, perfil) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/distancia/buscarDistancia`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -121,11 +122,11 @@ function plotarGrafico(resposta, idUsuario) {
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(
-        document.getElementById(`myChartCanvas${idUsuario}`),
+        document.getElementById(`grafico`),
         config
     );
 
-    setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+    //setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
 }
 
 
@@ -135,7 +136,8 @@ function plotarGrafico(resposta, idUsuario) {
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(idUsuario, dados, myChart) {
+
+/*function atualizarGrafico(idUsuario, dados, myChart) {
 
 
 
@@ -189,27 +191,28 @@ function atualizarGrafico(idUsuario, dados, myChart) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-}
+}*/
 
-var distancia = Number(ipt_distancia.value);
-var tempoHoras = Number(ipt_horas.value);
-var tempoMin = Number(ipt_minutos.value);
-var tempoSeg = Number(ipt_segundos.value);
+
 
 function salvarMetricas(){
     var idUsuario = sessionStorage.ID_USUARIO
 
-    fetch("/dashboard/salvarMetricas", {
+    var distanciaKm = Number(ipt_distancia.value);
+    var tempoHoras = Number(ipt_horas.value);
+    var tempoMin = Number(ipt_minutos.value);
+    var tempoSeg = Number(ipt_segundos.value);
+
+    fetch("/distancia/salvarMetricas", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            distanciaServer: distancia,
+            distanciaServer: distanciaKm,
             tempoHorasServer: tempoHoras,
             tempoMinServer: tempoMin,
             tempoSegServer: tempoSeg,
-            dtCorridaServer: dtCorrida,
             fkUsuarioServer: idUsuario
         })
     })
