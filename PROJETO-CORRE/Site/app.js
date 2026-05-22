@@ -40,7 +40,7 @@ app.use("/usuarios", usuarioRouter);
 //app.use("/aquarios", aquariosRouter);
 //app.use("/empresas", empresasRouter);
 
-app.use("/formulario", formularioRouter)
+app.use("/formulario", formularioRouter);
 app.use("/distancia", distanciaRouter);
 
 app.listen(PORTA_APP, function () {

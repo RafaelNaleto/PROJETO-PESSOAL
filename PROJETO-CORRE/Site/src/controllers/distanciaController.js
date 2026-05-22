@@ -1,4 +1,4 @@
-var distanciaController = require("../models/distanciaModel")
+var distanciaModel = require("../models/distanciaModel")
 
 function buscarDistancia(req, res) {
     var idUsuario = req.params.idUsuario

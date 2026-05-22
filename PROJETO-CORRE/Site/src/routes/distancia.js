@@ -3,7 +3,7 @@ var router = express.Router();
 
 var distanciaController = require("../controllers/distanciaController");
 
-router.get("/buscarDistancia",function(req, res) {
+router.get("/buscarDistancia/:idUsuario",function(req, res) {
     distanciaController.buscarDistancia(req, res)
 });
 
