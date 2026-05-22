@@ -342,6 +342,9 @@ function finalizarJogo() {
 
 }
 
+var distancia = ipt_distancia.value;
+var tempo = ipt_tempo.value;
+
 function salvarResposta(){
     var idUsuario = sessionStorage.ID_USUARIO
 
@@ -358,6 +361,7 @@ function salvarResposta(){
             fkUsuarioServer: idUsuario,
             perfilServer: perfil
         })
+        
     })
 
     /*

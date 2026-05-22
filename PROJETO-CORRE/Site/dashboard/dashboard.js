@@ -23,10 +23,22 @@ const meuGrafico = new Chart(ctx, {
     },
 
 });
+// O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
 
-function obterDadosGrafico(idUsuario) {
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+function obterDadosGrafico(idUsuario, perfil) {
 
     alterarTitulo(idUsuario)
+
+    perfilH2.innerHTML = `${perfil}`
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
@@ -64,19 +76,14 @@ function plotarGrafico(resposta, idUsuario) {
     let dados = {
         labels: labels,
         datasets: [{
-            label: 'Umidade',
+            label: 'Distância (km)',
             data: [],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        },
-        {
-            label: 'Temperatura',
-            data: [],
-            fill: false,
-            borderColor: 'rgb(199, 52, 52)',
-            tension: 0.1
+            borderColor: 'orangered',
+            backgroundColor: 'rgba(214, 57, 0, 0.4)',
+            borderWidth: 3,
+            fill: true
         }]
+
     };
 
     console.log('----------------------------------------------')
@@ -86,9 +93,8 @@ function plotarGrafico(resposta, idUsuario) {
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade);
-        dados.datasets[1].data.push(registro.temperatura);
+        labels.push(registro.dtCorrida);
+        dados.datasets[0].data.push(registro.distancia);
     }
 
     console.log('----------------------------------------------')
@@ -103,6 +109,14 @@ function plotarGrafico(resposta, idUsuario) {
     const config = {
         type: 'line',
         data: dados,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     };
 
     // Adicionando gráfico criado em div na tela
@@ -115,6 +129,7 @@ function plotarGrafico(resposta, idUsuario) {
 }
 
 
+
 // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
 // buscando a última medida inserida em tabela contendo as capturas, 
 
@@ -124,7 +139,7 @@ function atualizarGrafico(idUsuario, dados, myChart) {
 
 
 
-    fetch(`/medidas/tempo-real/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/distancia/tempo-real/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -174,4 +189,28 @@ function atualizarGrafico(idUsuario, dados, myChart) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+var distancia = Number(ipt_distancia.value);
+var tempoHoras = Number(ipt_horas.value);
+var tempoMin = Number(ipt_minutos.value);
+var tempoSeg = Number(ipt_segundos.value);
+
+function salvarMetricas(){
+    var idUsuario = sessionStorage.ID_USUARIO
+
+    fetch("/dashboard/salvarMetricas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            distanciaServer: distancia,
+            tempoHorasServer: tempoHoras,
+            tempoMinServer: tempoMin,
+            tempoSegServer: tempoSeg,
+            dtCorridaServer: dtCorrida,
+            fkUsuarioServer: idUsuario
+        })
+    })
 }

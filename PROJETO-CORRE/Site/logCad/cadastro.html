@@ -97,12 +97,12 @@ function cadastrar() {
         if (resposta.ok) {
             //cardErro.style.display = "block";
 
-            alert("Cadastro realizado com sucesso! Redirecionando para login...");
+            alert("Cadastro realizado com sucesso! Redirecionando para a avaliação de performance...");
 
             setTimeout(() => {
-                window.location = "login.html";
+                window.location.href = "../formulario/formulario.html";
             }, 2000);
-            limparFormulario();
+            //limparFormulario();
 
         } else {
 

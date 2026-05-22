@@ -24,9 +24,34 @@
     </header> 
 
     <h1>Performance</h1>
+    <h2 id="perfilH2"></h2>
     <div class="areaDashboard">
         <div class="dashboard">
             <canvas id="grafico"></canvas>
+
+            <div class="medidas">
+                <h3>Distância: </h3>
+                <input class="iptMedidas" type="number" id="ipt_distancia" placeholder="KM">
+                
+                <h3>Tempo: </h3>
+                <div class="iptTempo">
+   
+                <span>Horas:  </span><br>
+                <input  type="number" id="ipt_horas" placeholder="hh"><br>
+
+                <span>Minutos:  </span><br>
+                <input type="number" id="ipt_minutos" placeholder="mm">
+
+                <span>Segundos:  </span><br>
+                <input type="number" id="ipt_segundos" placeholder="ss">
+                </div>
+                
+                <br><br>
+
+                <button onclick="salvarMetricas()">SALVAR</button>
+            </div>
+
+
         </div>
 
         <div class="metas">

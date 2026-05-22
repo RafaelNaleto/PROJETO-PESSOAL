@@ -7,8 +7,8 @@
 }
 
 body{
-    color: black;
     background-color: white;
+    color: black;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -17,23 +17,49 @@ body::selection{
     color: white;
 }
 
-h1, 
-h2,
-h3, 
-nav a, 
-.btnLog, 
-.btn.head {
+h1{
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
+    color: orangered;
+    font-size: 3.5rem;
 }
 
-p, 
-span, 
-input, 
-button, 
-a {
+h2{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    color: orangered;
+    padding-bottom: 30px;
+    font-size: 3rem;
+}
+
+h3{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    color: rgb(128, 128, 128);
+    padding-top: 10px;
+}
+
+p{
     font-family: 'Montserrat', sans-serif;
 }
+
+span{
+    font-family: 'Montserrat', sans-serif;
+}
+
+input{
+    font-family: 'Montserrat', sans-serif;
+}
+
+button{
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* HOME */
 
 .logo{
     position: absolute;
@@ -42,41 +68,33 @@ a {
     width: 100px;
     height: auto;
     font-family: 'Bebas Neue', sans-serif;
-
-
 }
 
 .logo a{
     color: white;
     font-size: 2rem;
     text-decoration: none;
-    font-weight: bold ;
-
-            display: flex;
+    font-weight: bold;
+    display: flex;
     align-items: center;
 }
 
-
 nav{
-
-
     width: 100%;
     height: 80px;
-
+    background-color: orangered;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
-    background-color: orangered;
 }
 
 nav a{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
     font-size: 1.2rem;
     padding: 25px;
     color: azure;
     text-decoration: none;
-
 }
 
 nav a:hover{
@@ -89,6 +107,8 @@ nav a:hover{
 }
 
 .btnLog{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
     background-color: white;
     color: orangered;
     padding: 10px 22px;
@@ -96,25 +116,25 @@ nav a:hover{
     font-weight: bold;
     transition: 0.3s;
 }
-    .btnLog:hover{
-        background-color: orangered;
-        color: white;
-        outline: 2px solid white;
-        opacity: 1;
-    }
+
+.btnLog:hover{
+    background-color: orangered;
+    color: white;
+    outline: 2px solid white;
+    opacity: 1;
+}
 
 .cabecalho{
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("img/IMG-INICIO.jpeg");
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    text-align: center;
-    background: 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("img/IMG-INICIO.jpeg");
-    background-size:cover;
-    background-position: center; 
+
 }
 
 .cabecalho h1{
@@ -126,9 +146,9 @@ nav a:hover{
     margin-bottom: 20px;
 }
 
-
-
 .btn.head{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
     font-size: 1.2rem;
     margin-top: 10px;
     background-color: orangered;
@@ -137,29 +157,13 @@ nav a:hover{
     border-radius: 200px;
     font-weight: bold;
     border: none;
-}
-    .btn.head:hover{
-        transition: 0.3s;
-        transform: scale(1.02);
-    }
-
-.img.mov{
-    padding: 50px 20px;
-}
-.img.mov img{
-    height: 450px;
-    width: auto;
     transition: 0.3s;
-    border-radius: 20px;
-    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.5);
-    
 }
-    .img.mov img:hover{
-        transform: translateY(-5px);
-        box-shadow:0 10px 20px orangered;
-    }
 
-
+.btn.head:hover{
+    transition: 0.3s;
+    transform: scale(1.02);
+}
 
 .movimento{
     display: flex;
@@ -168,24 +172,22 @@ nav a:hover{
     padding: 80px 10%;
 }
 
-h1{
-    color: orangered;
-
-    font-size: 3.5rem;
-    
+.img.mov{
+    padding: 50px 20px;
 }
-h2{
-    color: orangered;
-    padding-bottom: 30px;
-    font-size: 3rem;
-}
-h3{
-    color: rgb(128, 128, 128);
 
-    padding-top: 10px;
+.img.mov img{
+    height: 450px;
+    width: auto;
+    transition: 0.3s;
+    border-radius: 20px;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.5);
 }
-    
 
+.img.mov img:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px orangered;
+}
 
 .container{
     max-width: 500px;
@@ -193,12 +195,14 @@ h3{
     font-size: 1.2rem;
     line-height: 1.6;
     border-radius: 20px;
+    transition: 0.3s;
 }
-    .container:hover{
-        transform: translateY(-5px);
-        transition: 0.3s;
-        box-shadow: 0 10px 20px orangered;
-    }
+
+.container:hover{
+    transform: translateY(-5px);
+    transition: 0.3s;
+    box-shadow: 0 10px 20px orangered;
+}
 
 .beneficio{
     display: flex;
@@ -206,10 +210,8 @@ h3{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("img/IMG-BENEFICIO.jpeg");
-    background-size:auto;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("img/IMG-BENEFICIO.jpeg");
+    background-size: auto;
     background-position: center;
 }
 
@@ -233,24 +235,29 @@ h3{
     text-align: center;
     border: 1px solid orangered;
 }
-    .card:hover{
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px orangered;
-    }
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px orangered;
+}
+
 .card h3{
     color: orangered;
     font-size: 1.5rem;
 }
+
 .card p{
     padding: 20px;
     font-size: 3rem;
     font-weight: bold;
-    color:whitesmoke ;
+    color: whitesmoke;
 }
+
 .card span{
     color: azure;
     text-align: center;
 }
+
 .card a{
     justify-content: center;
     text-align: center;
@@ -258,18 +265,18 @@ h3{
     color: orangered;
     text-decoration: none;
 }
-  
+
 .key{
     color: orangered;
 }
-.aplicativo{
 
+.aplicativo{
     height: 100vh;
 }
-.aplicativo h1{
-    margin:50px 30px;
-    justify-content: flex-start;
 
+.aplicativo h1{
+    margin: 50px 30px;
+    justify-content: flex-start;
 }
 
 .appPergunta{
@@ -280,24 +287,25 @@ h3{
     line-height: 1.6;
     border-radius: 20px;
     height: auto;
-
 }
+
 .appPergunta p{
     margin-top: 10px;
 }
+
 .boxPergunta{
     margin: 20px;
     border-radius: 25px;
     border: 2px solid gray;
     padding: 30px;
     height: 280px;
+    transition: 0.3s;
 }
-    .boxPergunta:hover{
-        transform: translateX(-2px);
-        transition: 0.2s;
-    }
 
-
+.boxPergunta:hover{
+    transform: translateX(-2px);
+    transition: 0.2s;
+}
 
 .appUsados{
     justify-content: space-between;
@@ -314,14 +322,13 @@ h3{
     padding: 30px;
 }
 
-.appUsados a {
+.appUsados a{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     background-color: transparent;
     transition: 0.2s;
-
 }
 
 .appBox{
@@ -333,19 +340,14 @@ h3{
     height: 220px;
     min-height: 200px;
     padding: 20px;
-}
-    .appBox:hover{
-        transform: translateY(-2px);
-    }
-.card,
-.container,
-.btn.head,
-.boxPergunta,
-.auth button,
-.img.mov img,
-.appBox{
     transition: 0.3s;
 }
+
+.appBox:hover{
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
 
 .footer{
     background-color: #0f0f0f;
@@ -358,7 +360,6 @@ h3{
 .footerContainer{
     width: 90%;
     margin: auto;
-
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -381,16 +382,34 @@ h3{
     line-height: 1.5;
 }
 
-.footerLinks,
-.footerContato,
+.footerLinks{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footerContato{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .footerSocial{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footerLinks h3,
-.footerContato h3,
+.footerLinks h3{
+    color: orangered;
+    margin-bottom: 10px;
+}
+
+.footerContato h3{
+    color: orangered;
+    margin-bottom: 10px;
+}
+
 .footerSocial h3{
     color: orangered;
     margin-bottom: 10px;
@@ -404,7 +423,7 @@ h3{
 
 .footer a:hover{
     color: orangered;
-    transform: translateX(3px);
+    transform: translateX(2px);
 }
 
 .footerDireitos{
@@ -415,23 +434,24 @@ h3{
     color: #a5a5a5;
 }
 
-
-/*LOGIN/CADASTRO*/
+/* LOGIN E CADASTRO */
 
 .auth{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: 
-        linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0,0.6)),
-        url("img/IMG-.jpg");
 
+    background: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0,0.6)), url("img/IMG-.jpg");
     background-size: cover;
     background-position: 60%;
-
 }
 
+
+#perfilH2{
+    display: flex;
+    justify-content: flex-end;
+}
 .box{
     border: 3px solid orangered;
     padding: 50px 80px;
@@ -456,13 +476,15 @@ h3{
     outline: none;
     transition: 0.2s;
 }
-    .auth input:active{
-        transform: scale(1.01);
-        transition: 0.2s;
-    }
-    .auth input:focus{
-        background-color: rgba(255, 68, 0, 0.12);
-        box-shadow: 0 0 3px rgba(255, 68, 0, 0.5);
+
+.auth input:active{
+    transform: scale(1.01);
+    transition: 0.2s;
+}
+
+.auth input:focus{
+    background-color: rgba(255, 68, 0, 0.12);
+    box-shadow: 0 0 3px rgba(255, 68, 0, 0.5);
 }
 
 .auth p{
@@ -470,6 +492,7 @@ h3{
     line-height: 1.6;
     font-weight: bold;
 }
+
 .auth span{
     text-align: center;
     padding: 20px;
@@ -483,17 +506,20 @@ h3{
     background-color: orangered;
     color: white;
     font-weight: bold;
-
+    transition: 0.3s;
 }
-    .auth button:hover{
-        background-color: rgb(214, 57, 0);
-        transform: scale(1.05);
-        transition: 0.2s;
-    }
-    .auth button:active{
-        transform: scale(0.98);
-        transition: 0.1s;
-    }
+
+.auth button:hover{
+    background-color: rgb(214, 57, 0);
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.auth button:active{
+    transform: scale(0.98);
+    transition: 0.1s;
+}
+
 .tes{
     display: flex;
     justify-content: center;
@@ -504,7 +530,7 @@ h3{
     justify-content: flex-end;
 }
 
-/*DASHBOARD*/
+/* DASHBOARD */
 
 .bodyDash{
     background-color: black;
@@ -513,6 +539,7 @@ h3{
 .bodyDash h1{
     padding: 25px;
 }
+
 .areaDashboard{
     display: flex;
     align-items: flex-start;
@@ -528,24 +555,92 @@ h3{
     height: 80%;
     background-color: rgb(9, 9, 9);
     padding: 30px;
-
 }
 
-.metas {
+.dashboard h3{
+    color: orangered;
+}
+
+.iptMedidas{
+    width: 70px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid orangered;
+    padding: 0 12px;
+    outline: none;
+    transition: 0.2s;
+    background-color: #292929;
+    color: orangered;
+}
+
+.iptMedidas:hover{
+    border: 3px solid orangered;
+}
+
+.medidas{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.iptTempo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#ipt_horas,
+#ipt_minutos,
+#ipt_segundos{
+    width: 70px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid orangered;
+    padding: 0 12px;
+    outline: none;
+    transition: 0.2s;
+    background-color: #292929;
+    color: orangered;
+}
+
+.iptTempo span{
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.medidas button{
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.medidas button:hover{
+    transform: scale(1.02);
+}
+
+.medidas button:active{
+    transform: scale(0.98);
+}
+
+.metas{
     width: 50%;
     min-height: 450px;
-    border: 2px solid orangered;
-    padding: 20px;
     border: 2px solid red;
+    padding: 20px;
 }
 
-.metas h2 {
+.metas h2{
     color: orangered;
     font-size: 3rem;
     margin-bottom: 20px;
 }
 
-.cardMeta {
+.cardMeta{
     background-color: rgb(15, 15, 15);
     border: 1px solid orangered;
     border-radius: 12px;
@@ -556,43 +651,32 @@ h3{
     transition: 0.3s;
 }
 
-.cardMeta:hover {
+.cardMeta:hover{
     transform: translateY(-4px);
     box-shadow: 0 0 18px orangered;
 }
 
-.cardMeta h3 {
+.cardMeta h3{
     color: orangered;
     font-size: 1.4rem;
     margin-bottom: 8px;
 }
 
-.cardMeta p {
+.cardMeta p{
     font-size: 1rem;
     color: #ccc;
 }
 
-.cardMeta b {
+.cardMeta b{
     color: orangered;
 }
 
-/*AVALIAÇÂO*/
-
-
-h1 {
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-}
+/* AVALIAÇÃO */
 
 .paginaQuiz{
     margin: 0;
     min-height: 100vh;
-    background:
-        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.78)),
-        url("img/IMG-.jpg");
+    background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.78)), url("img/IMG-.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -618,8 +702,28 @@ body {
     align-items: center;
 }
 
-.areaBotaoInicio button,
-#btnProx,
+.areaBotaoInicio button{
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnProx{
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 #btnTentarNovamente{
     background-color: orangered;
     color: white;
@@ -631,15 +735,47 @@ body {
     transition: 0.3s;
 }
 
-.areaBotaoInicio button:hover,
-#btnProx:hover,
-#btnTentarNovamente:hover{
-    transform: scale(1.05);
+.btnLogar{
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 13px 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.areaBotaoInicio button:hover{
+    transform: scale(1.02);
     background-color: rgb(255, 90, 30);
 }
 
-.areaBotaoInicio button:disabled,
-#btnProx:disabled,
+#btnProx:hover{
+    transform: scale(1.02);
+    background-color: rgb(255, 90, 30);
+}
+
+#btnTentarNovamente:hover{
+    transform: scale(1.02);
+    background-color: rgb(255, 90, 30);
+}
+
+.btnLogar:hover{
+    transform: scale(1.02);
+    background-color: rgb(255, 90, 30);
+}
+
+.areaBotaoInicio button:disabled{
+    background-color: #555;
+    transform: none;
+}
+
+#btnProx:disabled{
+    background-color: #555;
+    transform: none;
+}
+
 #btnTentarNovamente:disabled{
     background-color: #555;
     transform: none;
@@ -702,7 +838,6 @@ body {
 
 .labelAlternativa:hover{
     border-color: orangered;
-
     background-color: #292929;
 }
 
