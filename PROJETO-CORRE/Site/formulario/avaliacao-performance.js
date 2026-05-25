@@ -135,7 +135,7 @@ function preencherHTMLcomQuestaoAtual(index) {
         checarResposta()
     }
 }*/
-function responder(){
+function responder() {
     btnProx.disabled = false
 }
 
@@ -159,11 +159,11 @@ function avancar() {
 
 
     if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
-        setTimeout(() => {preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)}, 300)
+        setTimeout(() => { preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual) }, 300)
     }
 
     else {
-        setTimeout(() => {finalizarJogo()}, 300)
+        setTimeout(() => { finalizarJogo() }, 300)
     }
     limparCoresBackgroundOpcoes()
 
@@ -187,22 +187,22 @@ function checarResposta() {
 
             //questão 1 - tempo de experiencia
             if (numeroDaQuestaoAtual == 0) {
-                if(option.value == "alternativaA"){
+                if (option.value == "alternativaA") {
                     tempExpMeses = 0
                     pontuacaoFinal += questaoAtual.pontosA
                 }
 
-                else if(option.value == "alternativaB"){
+                else if (option.value == "alternativaB") {
                     tempExpMeses = 6
                     pontuacaoFinal += questaoAtual.pontosB
                 }
 
-                else if(option.value == "alternativaC"){
+                else if (option.value == "alternativaC") {
                     tempExpMeses = 12
                     pontuacaoFinal += questaoAtual.pontosC
                 }
 
-                else if(option.value == "alternativaD"){
+                else if (option.value == "alternativaD") {
                     tempExpMeses = 24
                     pontuacaoFinal += questaoAtual.pontosD
                 }
@@ -210,22 +210,22 @@ function checarResposta() {
 
             //questão 2 - disância máxima
             if (numeroDaQuestaoAtual == 1) {
-                if(option.value == "alternativaA"){
+                if (option.value == "alternativaA") {
                     maxDistancia = 3
                     pontuacaoFinal += questaoAtual.pontosA
                 }
 
-                else if(option.value == "alternativaB"){
+                else if (option.value == "alternativaB") {
                     maxDistancia = 5
                     pontuacaoFinal += questaoAtual.pontosB
                 }
 
-                else if(option.value == "alternativaC"){
+                else if (option.value == "alternativaC") {
                     maxDistancia = 10
                     pontuacaoFinal += questaoAtual.pontosC
                 }
 
-                else if(option.value == "alternativaD"){
+                else if (option.value == "alternativaD") {
                     maxDistancia = 21
                     pontuacaoFinal += questaoAtual.pontosD
                 }
@@ -233,22 +233,22 @@ function checarResposta() {
 
             //questão 3 - frequencia
             if (numeroDaQuestaoAtual == 2) {
-                if(option.value == "alternativaA"){
+                if (option.value == "alternativaA") {
                     freqSemanal = 1
                     pontuacaoFinal += questaoAtual.pontosA
                 }
 
-                else if(option.value == "alternativaB"){
+                else if (option.value == "alternativaB") {
                     freqSemanal = 3
                     pontuacaoFinal += questaoAtual.pontosB
                 }
 
-                else if(option.value == "alternativaC"){
+                else if (option.value == "alternativaC") {
                     freqSemanal = 5
                     pontuacaoFinal += questaoAtual.pontosC
                 }
 
-                else if(option.value == "alternativaD"){
+                else if (option.value == "alternativaD") {
                     freqSemanal = 6
                     pontuacaoFinal += questaoAtual.pontosD
                 }
@@ -256,27 +256,27 @@ function checarResposta() {
 
             //questão 4 - objetivo
             if (numeroDaQuestaoAtual == 3) {
-                if(option.value == "alternativaA"){
+                if (option.value == "alternativaA") {
                     objetivo = "Começar a correr"
                     pontuacaoFinal += questaoAtual.pontosA
                 }
 
-                else if(option.value == "alternativaB"){
+                else if (option.value == "alternativaB") {
                     objetivo = "Melhorar o meu condicionamento"
                     pontuacaoFinal += questaoAtual.pontosB
                 }
 
-                else if(option.value == "alternativaC"){
+                else if (option.value == "alternativaC") {
                     objetivo = "Melhorar o meu pace"
                     pontuacaoFinal += questaoAtual.pontosC
                 }
 
-                else if(option.value == "alternativaD"){
+                else if (option.value == "alternativaD") {
                     objetivo = "Competir"
                     pontuacaoFinal += questaoAtual.pontosD
                 }
             }
-            numeroDaQuestaoAtual++ 
+            numeroDaQuestaoAtual++
 
         }
 
@@ -302,18 +302,18 @@ function finalizarJogo() {
     /*let textoParaMensagemFinal = null
     let classComCoresParaMensagemFinal = null
     */
-   
-   let mensagem = ""
 
-    if(pontuacaoFinal <= 6){
+    let mensagem = ""
+
+    if (pontuacaoFinal <= 6) {
         perfil = "Iniciante"
         mensagem = "Seu perfil é de iniciante, comece com treinos leves e foque na constância."
-    } 
-    else if(pontuacaoFinal <= 11){
+    }
+    else if (pontuacaoFinal <= 11) {
         perfil = "Intermediário"
         mensagem = "Você já tem uma boa base. Agora foque em melhorar pace, aumentar distância e manter uma rotina semanal."
     }
-    else{
+    else {
         perfil = "Avançado"
         mensagem = "Você tem um perfil competitivo. Pode focar em metas como baixar tempo nos 5km, 10km ou meia maratona."
     }
@@ -326,10 +326,10 @@ function finalizarJogo() {
     //document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
     document.getElementById('msgFinal').innerHTML = `
-        Seu Perfil é: ${perfil} <br>
+        Seu Perfil é: <b>${perfil}<b> <br>
         ${mensagem} 
     `
-    
+
     document.getElementById('jogo').style.display = "none"
     document.getElementById('pontuacao').style.display = "flex"
 
@@ -338,14 +338,13 @@ function finalizarJogo() {
     // btnConcluir.disabled = true
     btnTentarNovamente.disabled = false
 
-    salvarResposta()
 
 }
 
 var distancia = ipt_distancia.value;
 var tempo = ipt_tempo.value;
 
-function salvarResposta(){
+function salvarResposta() {
     var idUsuario = sessionStorage.ID_USUARIO
 
     fetch("/formulario/salvarQuestionario", {
@@ -361,14 +360,23 @@ function salvarResposta(){
             fkUsuarioServer: idUsuario,
             perfilServer: perfil
         })
-        
-    })
 
-    /*
-    setTimeout(() => {
-        window.location = "../dashboard/dashboard.html";
-    }, 1000);
-    */
+    }).then(function (response) {
+        if (response.ok) {
+            alert("Redirecionando para tela de análise...")
+            setTimeout(() => {
+                window.location.href = "../dashboard/dashboard.html"
+            }, 2000)
+        } 
+    })
+    .catch(function(erro){
+        console.log("Erro ao salvar resposta:", erro);
+        alert("Erro ao salvar resposta!");
+    });
+
+
+
 }
+
 
 

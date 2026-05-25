@@ -25,10 +25,19 @@ create table questionario(
 create table corrida(
 	id int primary key auto_increment,
     distancia decimal(4,2) not null,
-    tempMinutos int not null,
-    dtCorrida datetime not null default now(),
+    tempHoras int not null,
+    tempMin int not null,
+    tempSeg int not null,
+    dtCorrida datetime not null,
     fkUsuario int not null,
     constraint cFkUsuario foreign key (fkUsuario)
     references usuario(id)
 );
+
+
+select * from usuario;
+
+
+INSERT INTO corrida (distancia, tempHoras, tempMin, tempSeg, dtCorrida, fkUsuario) VALUE
+	(21, 2, 8, 0, now(), 1);
 

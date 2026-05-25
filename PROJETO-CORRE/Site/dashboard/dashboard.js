@@ -38,14 +38,17 @@
 function obterDadosGrafico( ) {
 
     //alterarTitulo(idUsuario)
+    var idUsuario = sessionStorage.ID_USUARIO
 
-    perfilH2.innerHTML = `${perfil}`
+    console.log(idUsuario)
+    //perfilH2.innerHTML = `${perfil}`
+/*
+if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
+}
+*/
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
-
-    fetch(`/distancia/buscarDistancia`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -92,7 +95,7 @@ function plotarGrafico(resposta, idUsuario) {
     console.log(resposta)
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
+    for (let i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         labels.push(registro.dtCorrida);
         dados.datasets[0].data.push(registro.distancia);
@@ -137,11 +140,11 @@ function plotarGrafico(resposta, idUsuario) {
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
 
-/*function atualizarGrafico(idUsuario, dados, myChart) {
+function atualizarGrafico(idUsuario, dados, myChart) {
 
 
 
-    fetch(`/distancia/tempo-real/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -170,10 +173,10 @@ function plotarGrafico(resposta, idUsuario) {
                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].distancia); // incluir uma nova medida de umidade
 
-                    dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    //dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                    //dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
                     myChart.update();
                 }
@@ -191,12 +194,12 @@ function plotarGrafico(resposta, idUsuario) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-}*/
+}
 
 
 
 function salvarMetricas(){
-    var idUsuario = sessionStorage.ID_USUARIO
+    var idUsuario = sessionStorage.ID_USUARIO;
 
     var distanciaKm = Number(ipt_distancia.value);
     var tempoHoras = Number(ipt_horas.value);
@@ -217,3 +220,4 @@ function salvarMetricas(){
         })
     })
 }
+

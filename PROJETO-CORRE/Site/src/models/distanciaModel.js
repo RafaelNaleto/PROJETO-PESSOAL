@@ -2,7 +2,9 @@ var database = require("../database/config");
 
 function buscarDistancia(idUsuario){
     var instrucaoSql = `
-    SELECT distancia FROM corrida where fkUsuario = ${idUsuario};
+    SELECT distancia, 
+    DATE_FORMAT(dtCorrida, '%d/%m')
+        FROM corrida where fkUsuario = ${idUsuario};
     `
 
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
