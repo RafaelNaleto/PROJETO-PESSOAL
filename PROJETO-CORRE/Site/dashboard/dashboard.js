@@ -35,11 +35,13 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico( ) {
 
+
+
+function obterDadosGrafico( ) {
     //alterarTitulo(idUsuario)
     var idUsuario = sessionStorage.ID_USUARIO
-
+    
     console.log(idUsuario)
     //perfilH2.innerHTML = `${perfil}`
 /*
@@ -48,7 +50,9 @@ if (proximaAtualizacao != undefined) {
 }
 */
 
-    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' })
+    
+    .then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -71,8 +75,6 @@ if (proximaAtualizacao != undefined) {
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGrafico(resposta, idUsuario) {
 
-    console.log('iniciando plotagem do gráfico...');
-
     // Criando estrutura para plotar gráfico - labels
     let labels = [];
 
@@ -90,15 +92,18 @@ function plotarGrafico(resposta, idUsuario) {
 
     };
 
+    console.log('iniciando plotagem do gráfico...');
     console.log('----------------------------------------------')
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
-
+    //zerando os dados antigos
+    labels.length = 0;
+    dados.datasets[0].data.length = 0;
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (let i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
-        labels.push(registro.dtCorrida);
-        dados.datasets[0].data.push(registro.distancia);
+        labels.push(registro.data_formatada);
+        dados.datasets[0].data.push(registro.total_distancia);
     }
 
     console.log('----------------------------------------------')
@@ -122,14 +127,13 @@ function plotarGrafico(resposta, idUsuario) {
             }
         }
     };
-
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(
         document.getElementById(`grafico`),
         config
     );
 
-    //setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+    //setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 200);
 }
 
 
@@ -140,61 +144,65 @@ function plotarGrafico(resposta, idUsuario) {
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
 
+/*
 function atualizarGrafico(idUsuario, dados, myChart) {
+    
 
 
-
-    fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (novoRegistro) {
-
-                obterdados(idUsuario);
-                // alertar(novoRegistro, idAquario);
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico:`);
-                console.log(dados);
-
-                let avisoCaptura = document.getElementById(`avisoCaptura${idUsuario}`)
-                avisoCaptura.innerHTML = ""
-
-
-                if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                    console.log("---------------------------------------------------------------")
-                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                    avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                    console.log("Horário do novo dado capturado:")
-                    console.log(novoRegistro[0].momento_grafico)
-                    console.log("Horário do último dado capturado:")
-                    console.log(dados.labels[dados.labels.length - 1])
-                    console.log("---------------------------------------------------------------")
-                } else {
-                    // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].distancia); // incluir uma nova medida de umidade
-
-                    //dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                    //dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                    myChart.update();
-                }
-
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+fetch(`/distancia/buscarDistancia/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+            
+        //obterdados(idUsuario);
+        // alertar(novoRegistro, idAquario);
+        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+        console.log(`Dados atuais do gráfico:`);
+        console.log(dados);
+        
+        //let avisoCaptura = document.getElementById(`avisoCaptura${idUsuario}`)
+        //avisoCaptura.innerHTML = ""
+        
+        
+        if (novoRegistro[0].dtCorrida == dados.labels[dados.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].dtCorrida)
+            console.log("Horário do último dado capturado:")
+            console.log(dados.labels[dados.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+            //dados.labels.shift(); // apagar o primeiro
+            //dados.labels.push(novoRegistro[0].dtCorrida); // incluir um novo momento
+            
+            //dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+            //dados.datasets[0].data.push(novoRegistro[0].distancia); // incluir uma nova medida de umidade
+            
+            //dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+            //dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            obterDadosGrafico();
+            //myChart.update();
         }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+        
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        
+        //proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+    });
+} else {
+    console.error('Nenhum dado encontrado ou erro na API');
+// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+//proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+}
+})
+.catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+});
 
 }
+*/
+
 
 
 
@@ -219,5 +227,143 @@ function salvarMetricas(){
             fkUsuarioServer: idUsuario
         })
     })
+    .then(function (response){
+        if (response.ok) {
+            alert("Métricas salvas com sucesso...")
+            setTimeout(() => {
+                window.location.href = "../dashboard/dashboard.html"
+            }, 200)
+        } 
+    })
+    .catch(function (error){
+        console.log("Erro ao salvar!")
+    });
+
+
 }
 
+function buscarHistorico(){
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/distancia/buscarHistorico/${idUsuario}`, {cache: 'no-store'})
+    .then(function (response) {
+        if (response.status == 200) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                converterTempo(resposta, idUsuario);
+            });
+        } else if(response.status == 204) {
+            historicoDeCorrida.innerHTML = `
+            <br><br>
+            <hr>
+            <br><br>
+            <b>Sem corridas salvas... <br>
+            Corra e salve seus resultados!<b>
+            `
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        })
+}
+
+function converterTempo(resposta) {
+
+    for (let i = 0; i < resposta.length; i++) {
+
+        var tempoHoras = resposta[i].tempHoras * 60;
+        var tempoMinutos = resposta[i].tempMin;
+        var tempoSegundos = resposta[i].tempSeg / 60;
+
+        let tempoMinTotal = tempoHoras + tempoMinutos + tempoSegundos;
+
+        let paceDecimal = tempoMinTotal / Number(resposta[i].distancia);
+
+        let paceMin = Math.floor(paceDecimal);
+        let paceSeg = Math.round((paceDecimal - paceMin) * 60);
+
+        let pace = `${paceMin}:${String(paceSeg).padStart(2, '0')} min/km`;
+
+        resposta[i].pace = pace;
+    }
+
+    exibirHistorico(resposta);
+}
+
+function exibirHistorico(resposta) {
+
+    historicoDeCorrida.innerHTML = "";
+
+    for (let i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+
+        historicoDeCorrida.innerHTML += `
+            <b>DATA:</b> ${registro.dtCorrida} |
+            <b>DISTÂNCIA:</b> ${registro.distancia} km |
+            <b>PACE:</b> ${registro.pace}
+            <br>
+        `;
+    }
+}
+
+function buscarKPI(){
+var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/distancia/buscarKPI/${idUsuario}`, {cache: 'no-store'})
+    .then(function (response) {
+        if (response.status == 200) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                somarTempo(resposta, idUsuario);
+                
+                if (Number(resposta[0].distanciaTotal) != 0) {
+                    distanciaTotal.innerHTML = `
+                    ${Number(resposta[0].distanciaTotal).toFixed(0)}Km 
+                    `
+                } else {
+                    distanciaTotal.innerHTML = `-`
+                }
+
+                tempo.innerHTML = resposta[0].tempoTotal;
+
+
+            });
+        } else if(response.status == 204) {
+            metricaTotal.innerHTML = `
+            -
+            `
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        })
+}
+
+function somarTempo(resposta){
+    let horas = Number(resposta[0].tempHoras);
+    let minutos = Number(resposta[0].tempMin);
+    let segundos = Number(resposta[0].tempSeg);
+
+    let tempo = horas + (minutos / 60) + (segundos / 3600);
+    let horasTotal = Math.floor(tempo);
+    let tempoTotalMin = (tempo - horasTotal) * 60;
+
+    let tempoTotal = `${horasTotal}h${tempoTotalMin.toFixed(0)}`;
+
+    console.log(`${horasTotal}h${tempoTotalMin.toFixed(0)}`)
+
+    resposta[0].tempoTotal = tempoTotal;
+}
+
+function iniciarPagina(){
+    obterDadosGrafico();
+    buscarKPI();
+}

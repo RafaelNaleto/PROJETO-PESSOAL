@@ -366,8 +366,8 @@ function salvarResposta() {
             alert("Redirecionando para tela de análise...")
             setTimeout(() => {
                 window.location.href = "../dashboard/dashboard.html"
-            }, 2000)
-        } 
+            }, 200)
+        }
     })
     .catch(function(erro){
         console.log("Erro ao salvar resposta:", erro);

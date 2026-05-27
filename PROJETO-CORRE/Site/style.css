@@ -198,12 +198,6 @@ nav a:hover{
     transition: 0.3s;
 }
 
-.container:hover{
-    transform: translateY(-5px);
-    transition: 0.3s;
-    box-shadow: 0 10px 20px orangered;
-}
-
 .beneficio{
     display: flex;
     height: 100vh;
@@ -452,6 +446,7 @@ nav a:hover{
     display: flex;
     justify-content: flex-end;
 }
+
 .box{
     border: 3px solid orangered;
     padding: 50px 80px;
@@ -533,144 +528,168 @@ nav a:hover{
 /* DASHBOARD */
 
 .bodyDash{
-    background-color: black;
+    background: radial-gradient(circle at top, #1a1a1a, #050505 60%);
+    color: white;
 }
 
 .bodyDash h1{
-    padding: 25px;
+    padding: 35px 5% 10px;
+    font-size: 4rem;
 }
 
 .areaDashboard{
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     width: 95%;
-    height: 100%;
+    margin: 0 auto;
     padding: 25px;
-    gap: 40px;
-    border: 2px solid red;
+    gap: 30px;
 }
 
 .dashboard{
-    width: 80%;
-    height: 80%;
-    background-color: rgb(9, 9, 9);
+    width: 70%;
+    background-color: rgba(15, 15, 15, 0.95);
     padding: 30px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 69, 0, 0.35);
+    box-shadow: 0 0 25px rgba(255, 69, 0, 0.12);
 }
 
-.dashboard h3{
-    color: orangered;
-}
-
-.iptMedidas{
-    width: 70px;
-    height: 35px;
-    border-radius: 10px;
-    border: 1px solid orangered;
-    padding: 0 12px;
-    outline: none;
-    transition: 0.2s;
-    background-color: #292929;
-    color: orangered;
-}
-
-.iptMedidas:hover{
-    border: 3px solid orangered;
+#grafico{
+    background-color: #111;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
 }
 
 .medidas{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    gap: 12px;
+    background-color: #111;
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 69, 0, 0.25);
+}
+
+.medidas h3{
+    color: orangered;
+    font-size: 1.5rem;
+}
+
+.iptMedidas,
+#ipt_horas,
+#ipt_minutos,
+#ipt_segundos{
+    width: 90px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 69, 0, 0.7);
+    padding: 0 12px;
+    outline: none;
+    background-color: #202020;
+    color: white;
+}
+
+.iptMedidas:focus,
+#ipt_horas:focus,
+#ipt_minutos:focus,
+#ipt_segundos:focus{
+    border-color: orangered;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.4);
 }
 
 .iptTempo{
     display: flex;
     align-items: center;
-    gap: 5px;
-}
-
-#ipt_horas,
-#ipt_minutos,
-#ipt_segundos{
-    width: 70px;
-    height: 35px;
-    border-radius: 10px;
-    border: 1px solid orangered;
-    padding: 0 12px;
-    outline: none;
-    transition: 0.2s;
-    background-color: #292929;
-    color: orangered;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .iptTempo span{
-    color: white;
-    font-family: 'Bebas Neue', sans-serif;
+    color: #cfcfcf;
+    font-size: 0.9rem;
 }
 
 .medidas button{
-    width: 120px;
-    height: 35px;
-    border-radius: 8px;
+    margin-top: 10px;
+    width: 150px;
+    height: 42px;
+    border-radius: 20px;
     border: none;
     background-color: orangered;
     color: white;
     font-weight: bold;
+    cursor: pointer;
     transition: 0.3s;
 }
 
 .medidas button:hover{
-    transform: scale(1.02);
-}
-
-.medidas button:active{
-    transform: scale(0.98);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
 }
 
 .metas{
-    width: 50%;
-    min-height: 450px;
-    border: 2px solid red;
-    padding: 20px;
+    width: 30%;
+    background-color: rgba(15, 15, 15, 0.9);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 69, 0, 0.3);
+    padding: 25px;
+    box-shadow: 0 0 25px rgba(255, 69, 0, 0.1);
 }
 
 .metas h2{
-    color: orangered;
-    font-size: 3rem;
-    margin-bottom: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .cardMeta{
-    background-color: rgb(15, 15, 15);
-    border: 1px solid orangered;
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 15px;
+    background: linear-gradient(135deg, #151515, #0b0b0b);
+    border: 1px solid rgba(255, 69, 0, 0.45);
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
     color: white;
-    box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
     transition: 0.3s;
 }
 
 .cardMeta:hover{
     transform: translateY(-4px);
-    box-shadow: 0 0 18px orangered;
+    box-shadow: 0 0 18px rgba(255, 69, 0, 0.5);
 }
 
 .cardMeta h3{
     color: orangered;
-    font-size: 1.4rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    padding-top: 0;
 }
 
 .cardMeta p{
-    font-size: 1rem;
-    color: #ccc;
+    color: white;
+    line-height: 1.5;
 }
 
-.cardMeta b{
+.metricas{
+    display: flex;
+    gap: 20px;
+}
+
+.cardMetrica{
+    text-align: center;
+    background: linear-gradient(135deg, #151515, #0b0b0b);
+    border: 1px solid rgba(255, 69, 0, 0.4);
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+    color: white;
+    transition: 0.3s;
+}
+
+.cardMetrica span{
     color: orangered;
+    font-size: 2rem;
+    font-weight: bold;
 }
-
 /* AVALIAÇÃO */
 
 .paginaQuiz{
@@ -877,3 +896,5 @@ nav a:hover{
     line-height: 1.5;
     color: white;
 }
+
+

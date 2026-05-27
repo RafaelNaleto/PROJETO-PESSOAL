@@ -29,14 +29,16 @@ function entrar() {
                 fetch(`/formulario/verificarQuestionario/${idUsuario}`, { cache: 'no-store' })
                     .then(function (response) {
                         if (response.status == 200) {
+                            alert("Redirecionando para área de performance...")
                             setTimeout(() => {
                                 window.location.href = "../dashboard/dashboard.html"
-                            }, 2000);
+                            }, 1000);
                         }
-                        else if (response.status == 204){
+                        else if (response.status == 204) {
+                            alert("Você será redirecionado para uma avaliação para entender seu nível na corrida!")
                             setTimeout(() => {
                                 window.location.href = "../formulario/formulario.html"
-                            }, 2000);
+                            }, 1000);
                         }
                     }).catch(function (error) {
                         console.error(`Erro na verificação: ${error.message}`);
@@ -90,6 +92,13 @@ function cadastrar() {
         return false;
     }
 
+    if (senhaVar.length < 6) {
+        alert("A senha precisa ter mais de 6 dígitos!")
+        return false;
+    }
+
+
+
     fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -109,7 +118,7 @@ function cadastrar() {
         if (resposta.ok) {
             //cardErro.style.display = "block";
 
-            alert("Cadastro realizado com sucesso! Redirecionando para a avaliação de performance...");
+            alert("Seja bem-vindo! Seu cadastro foi realizado com sucesso!");
 
             sessionStorage.clear();
 

@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="bodyDash" onload="obterDadosGrafico()">
+<body class="bodyDash" onload="iniciarPagina()">
     <header>
         <div class="logo">
             <i><a href="../home/index.html">CORRE</a></i>
@@ -55,6 +55,24 @@
         </div>
 
         <div class="metas">
+            <h2>MÉTRICAS</h2>
+            <br>
+            <div class="metricas">
+                <div class="cardMetrica">
+                    <h4>DISTÂNICA TOTAL</h4>
+
+                    <span id="distanciaTotal">-</span>
+                </div>
+
+                <div class="cardMetrica">
+                    <h4>TEMPO TOTAL</h4>
+
+                    <span id="tempo">-</span>
+                </div>
+            </div>
+
+            <br><br><br> 
+
             <h2>Metas</h2>
 
             <div class="cardMeta">
@@ -80,11 +98,18 @@
         </div>
     </div>
 
+    
+    <div class="historico">
+        <h2>VER CORRIDAS</h2>
 
-    <script src="dashboard.js"></script>
+        <button onclick="buscarHistorico()">VER TODAS AS CORRIDAS</button>
+
+        <span id="historicoDeCorrida"></span>
+    </div>
 
 
-
+    
 </body>
+<script src="dashboard.js"></script>
 
 </html>
