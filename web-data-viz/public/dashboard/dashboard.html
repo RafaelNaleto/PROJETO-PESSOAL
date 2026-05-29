@@ -195,11 +195,9 @@
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idAquario) {
 
-        console.log('iniciando plotagem do gráfico...');
-
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
-
+        
         // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
@@ -218,7 +216,8 @@
                 tension: 0.1
             }]
         };
-
+        
+        console.log('iniciando plotagem do gráfico...');
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
