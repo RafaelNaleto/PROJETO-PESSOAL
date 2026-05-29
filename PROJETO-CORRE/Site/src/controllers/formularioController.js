@@ -9,14 +9,7 @@ function salvarQuestionario(req, res) {
     var fkUsuario = req.body.fkUsuarioServer;
     var perfil = req.body.perfilServer;
 
-    formularioModel.salvarQuestionario(
-        tempExpMeses,
-        maxDistancia,
-        freqSemanal,
-        objetivo,
-        fkUsuario,
-        perfil
-    )
+    formularioModel.salvarQuestionario(tempExpMeses, maxDistancia, freqSemanal, objetivo, fkUsuario, perfil)
     .then(function(resultado){
         res.status(200).json(resultado);
     })

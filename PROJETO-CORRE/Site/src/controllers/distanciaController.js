@@ -24,13 +24,7 @@ function salvarMetricas(req, res) {
     var tempoSeg = req.body.tempoSegServer;
     var fkUsuario = req.body.fkUsuarioServer;
 
-    distanciaModel.salvarMetricas(
-        distanciaKm,
-        tempoHoras,
-        tempoMin,
-        tempoSeg,
-        fkUsuario
-    )
+    distanciaModel.salvarMetricas(distanciaKm, tempoHoras, tempoMin, tempoSeg, fkUsuario)
     .then(function(resultado){
         res.status(200).json(resultado);
     })

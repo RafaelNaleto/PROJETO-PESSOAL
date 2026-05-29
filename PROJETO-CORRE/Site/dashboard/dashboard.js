@@ -256,7 +256,7 @@ function buscarHistorico(){
             });
         } else if(response.status == 204) {
             historicoDeCorrida.innerHTML = `
-            <br><br>
+            
             <hr>
             <br><br>
             <b>Sem corridas salvas... <br>
@@ -286,7 +286,7 @@ function converterTempo(resposta) {
         let paceMin = Math.floor(paceDecimal);
         let paceSeg = Math.round((paceDecimal - paceMin) * 60);
 
-        let pace = `${paceMin}:${String(paceSeg).padStart(2, '0')} min/km`;
+        let pace = `${paceMin}:${String(paceSeg).padStart(2, '0')}/km`;
 
         resposta[i].pace = pace;
     }
@@ -310,6 +310,28 @@ function exibirHistorico(resposta) {
     }
 }
 
+const metas = [{
+    perfil: "Iniciante",
+    tempo5k: "30 min",
+    distanciaMax: "5km",
+    frequencia: "2 vezes",
+    ritmo: "6:30/km"
+},
+{
+    perfil: "Intermediário",
+    tempo5k: "25 min",
+    distanciaMax: "15km",
+    frequencia: "4 vezes",
+    ritmo: "5:30/km"
+},
+{
+    perfil: "Avançado",
+    tempo5k: "20 min",
+    distanciaMax: "25km",
+    frequencia: "5 vezes",
+    ritmo: "4:30/km"
+}]
+
 function buscarKPI(){
 var idUsuario = sessionStorage.ID_USUARIO;
 
@@ -330,7 +352,11 @@ var idUsuario = sessionStorage.ID_USUARIO;
                     distanciaTotal.innerHTML = `-`
                 }
 
-                tempo.innerHTML = resposta[0].tempoTotal;
+                if (Number (resposta[0].tempo != 0)) {
+                    tempo.innerHTML = resposta[0].tempoTotal;
+                } else {
+                    tempo.innerHTML = `-`
+                }
 
 
             });
@@ -366,4 +392,48 @@ function somarTempo(resposta){
 function iniciarPagina(){
     obterDadosGrafico();
     buscarKPI();
+    exibirMetas();
 }
+
+function exibirMetas(){
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/formulario/verificarQuestionario/${idUsuario}`, {cache: 'no-cache'})
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta){
+                if (resposta[0].perfil == 'Iniciante'){
+                    metaPerfil.innerHTML = `${metas[0].perfil}`
+
+                    meta5k.innerHTML = `${metas[0].tempo5k}`
+                    metaDistancia.innerHTML = `${metas[0].distanciaMax}`
+                    metaFreq.innerHTML = `${metas[0].frequencia}`
+                    metaRitmo.innerHTML = `${metas[0].ritmo}`
+                }
+
+                else if (resposta[0].perfil == 'Intermediário'){
+                    metaPerfil.innerHTML = `${metas[1].perfil}`
+
+                    meta5k.innerHTML = `${metas[1].tempo5k}`
+                    metaDistancia.innerHTML = `${metas[1].distanciaMax}`
+                    metaFreq.innerHTML = `${metas[1].frequencia}`
+                    metaRitmo.innerHTML = `${metas[1].ritmo}`
+                }
+
+                else if (resposta[0].perfil == 'Avançado'){
+                    metaPerfil.innerHTML = `${metas[2].perfil}`
+
+                    meta5k.innerHTML = `${metas[2].tempo5k}`
+                    metaDistancia.innerHTML = `${metas[2].distanciaMax}`
+                    metaFreq.innerHTML = `${metas[2].frequencia}`
+                    metaRitmo.innerHTML = `${metas[2].ritmo}`
+                }
+            })
+        }
+    })
+    .catch(function(error){
+        console.error(`Erro na obtenção dos dados p/ metas: ${error.message}`);
+    })
+    
+}
+

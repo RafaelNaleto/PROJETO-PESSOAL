@@ -13,7 +13,7 @@ function salvarQuestionario(tempExpMeses, maxDistancia, freqSemanal , objetivo, 
 
 function verificarQuestionario(idUsuario){
     var instrucaoSql = `
-        SELECT id FROM questionario where fkUsuario = ${idUsuario};
+        SELECT id, perfil FROM questionario where fkUsuario = ${idUsuario};
     `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

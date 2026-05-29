@@ -74,38 +74,41 @@
             <br><br><br> 
 
             <h2>Metas</h2>
+            <h3 id="metaPerfil"></h3>
 
             <div class="cardMeta">
                 <h3>5 KM</h3>
                 <!-- Alterar dependendo do formulário de performance -->
-                <p>Correr 5km em até <b>25 min</b></p>
+                <p>Correr 5Km em até <b><span id="meta5k"></span></b></p>
             </div>
 
             <div class="cardMeta">
                 <h3>Distância</h3>
-                <p>Aumentar para <b>10 km</b></p>
+                <p>Aumentar para <b><span id="metaDistancia"></span></b></p>
             </div>
 
             <div class="cardMeta">
                 <h3>Frequência</h3>
-                <p>Correr <b>4 vezes</b> por semana</p>
+                <p>Correr <b><span id="metaFreq"></span></b> por semana</p>
             </div>
 
             <div class="cardMeta">
                 <h3>Ritmo</h3>
-                <p>Manter pace abaixo de <b>5:30/km</b></p>
+                <p>Manter pace abaixo de <b><span id="metaRitmo"></span></b></p>
             </div>
         </div>
     </div>
 
-    
-    <div class="historico">
-        <h2>VER CORRIDAS</h2>
+    <div class="areaHistorico">
+        <div class="historico">
+            <h2>VER CORRIDAS</h2>
 
-        <button onclick="buscarHistorico()">VER TODAS AS CORRIDAS</button>
-
-        <span id="historicoDeCorrida"></span>
+            <button onclick="buscarHistorico()">VER TODAS AS CORRIDAS</button>
+            
+            <div id="historicoDeCorrida"></div>
+        </div>
     </div>
+
 
 
     
