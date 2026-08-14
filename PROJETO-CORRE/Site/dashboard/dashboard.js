@@ -339,7 +339,7 @@ var idUsuario = sessionStorage.ID_USUARIO;
     .then(function (response) {
         if (response.status == 200) {
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
                 resposta.reverse();
 
                 somarTempo(resposta, idUsuario);
